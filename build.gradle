@@ -1,0 +1,26 @@
+apply plugin: "groovy"
+
+version = "0.6"
+description = "FlexC Test Project"
+
+// Spock works with Java 1.5 and above
+sourceCompatibility = 1.5
+
+repositories {
+  // Spock releases are available from Maven Central
+  mavenCentral()
+  // Spock development snapshots are available from Spock's Maven repo
+  maven { url "http://m2repo.spockframework.org/snapshots" }
+}
+
+dependencies {
+  // mandatory dependencies for using Spock
+  testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
+
+  // optional dependencies for using Spock
+  testCompile "org.hamcrest:hamcrest-core:1.2" // only necessary if Hamcrest matchers are used
+  testRuntime "cglib:cglib-nodep:2.2"          // allows mocking of classes (in addition to interfaces)
+  testRuntime "org.objenesis:objenesis:1.2"    // allows mocking of classes without default constructor (together with CGLIB)
+  testCompile "org.codehaus.groovy.modules.http-builder:http-builder:0.7"
+}
+
